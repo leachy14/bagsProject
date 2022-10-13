@@ -1,3 +1,9 @@
+/**
+ * This class will test the Bag class
+ * The methods used are all to test the bags class as well as calculate probabilities
+ * @author Christopher Leach
+ * @version 1.0
+ */
 public class BagTest {
 
     public static Coin penny = new Coin("penny", 0.01);
@@ -22,8 +28,14 @@ public class BagTest {
         // run example four
         System.out.println("Running example four");
         exampleFour(coinBag);
+        // run example five
+        System.out.println("Running example five");
+        exampleFive(coinBag);
 
-
+        /*
+         * I'm going to put the output in each example method as the output is quite lengthy
+         * and I don't want to clutter up the main method
+         */
     } //ends main
 
 
@@ -59,6 +71,40 @@ public class BagTest {
 
         //clear the bag
         aBag.clear();
+
+        /**
+         * output:
+         * Testing the bag methods
+         * The bag contains 8 coin(s), as follows:
+         * penny 0.01
+         * nickel 0.05
+         * nickel 0.05
+         * nickel 0.05
+         * nickel 0.05
+         * dime 0.1
+         * dime 0.1
+         * nickel 0.05
+         *
+         * The number of coins in the bag are: 8
+         * Test remove() : nickel 0.05
+         * The number of coins in the bag are: 7
+         * Test remove(anItem) : true
+         * The number of coins in the bag are: 6
+         * The bag contains 6 coin(s), as follows:
+         * penny 0.01
+         * nickel 0.05
+         * nickel 0.05
+         * nickel 0.05
+         * nickel 0.05
+         * dime 0.1
+         *
+         * The bag contians penny: true
+         * The bag contains quarter: false
+         * Get the frequency of a penny: 1
+         * Get the frequency of a quarter: 0
+         * Get the frequency of a dime: 2
+         * Get the frequency of a nickel: 5
+         */
     } //ends testBagsMethods
 
     // tests toarray method
@@ -84,13 +130,12 @@ public class BagTest {
         }
     }
 
-    // a method to calculate the probability of getting a certain coin
 
     /**
      * Example one will add two of each coins to the bag, it will then remove one quarter and one dime
      * It will calculate the probability of picking a quarter, then the probability of picking a dime
      * Afterwards it will calculate the probablility of picking both a quarter and a dime one after the other
-     * @param aBag
+     * @param aBag bag of coins
      */
     public static void exampleOne(BagInterface<Coin> aBag) {
         //add all the coins to the bag twice
@@ -104,12 +149,12 @@ public class BagTest {
         aBag.add(penny);
         displayBag(aBag);
         // calculate the probability of picking a quarter
-        double probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / aBag.getCurrentSize();
+        double probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / (double)aBag.getCurrentSize();
         System.out.println("The probability of picking a quarter is: " + probabilityOfQuarter);
         //remove a random coin and display what was removed
         System.out.println("The coin removed was: " + aBag.remove());
         // calculate the probability of picking a dime
-        double probabilityOfDime = (double) aBag.getFrequencyOf(dime) / aBag.getCurrentSize();
+        double probabilityOfDime =  (double) aBag.getFrequencyOf(dime) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a dime is: " + probabilityOfDime);
         System.out.println("The coin removed was: " + aBag.remove());
         // calculate the probability of picking a quarter and a dime one after the other
@@ -117,6 +162,26 @@ public class BagTest {
         System.out.println("The probability of picking a quarter and a dime one after the other is: " + probabilityOfQuarterAndDime);
 
         aBag.clear();
+
+        /*
+         * output:
+         * Running example one
+         * The bag contains 8 coin(s), as follows:
+         * quarter 0.25
+         * quarter 0.25
+         * dime 0.1
+         * dime 0.1
+         * nickel 0.05
+         * nickel 0.05
+         * penny 0.01
+         * penny 0.01
+         *
+         * The probability of picking a quarter is: 0.25
+         * The coin removed was: penny 0.01
+         * The probability of picking a dime is: 0.2857142857142857
+         * The coin removed was: penny 0.01
+         * The probability of picking a quarter and a dime one after the other is: 0.07142857142857142
+         */
     }
 
     /**
@@ -124,6 +189,7 @@ public class BagTest {
      * it will calculate the probability of picking every coin then remove a random coin and display what was removed
      * it will then calculate the probability of picking every coin again and display the results
      * it will then remove another random coin and display what was removed
+     * @param aBag a bag of coins
      */
     public static void exampleTwo(BagInterface<Coin> aBag) {
         //add all the coins to the bag twice
@@ -137,30 +203,30 @@ public class BagTest {
         aBag.add(penny);
         displayBag(aBag);
         // calculate the probability of picking a quarter
-        double probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / aBag.getCurrentSize();
+        double probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a quarter is: " + probabilityOfQuarter);
         // calculate the probability of picking a dime
-        double probabilityOfDime = (double) aBag.getFrequencyOf(dime) / aBag.getCurrentSize();
+        double probabilityOfDime = (double) aBag.getFrequencyOf(dime) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a dime is: " + probabilityOfDime);
         // calculate the probability of picking a nickel
-        double probabilityOfNickel = (double) aBag.getFrequencyOf(nickel) / aBag.getCurrentSize();
+        double probabilityOfNickel = (double) aBag.getFrequencyOf(nickel) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a nickel is: " + probabilityOfNickel);
         // calculate the probability of picking a penny
-        double probabilityOfPenny = (double) aBag.getFrequencyOf(penny) / aBag.getCurrentSize();
+        double probabilityOfPenny = (double) aBag.getFrequencyOf(penny) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a penny is: " + probabilityOfPenny);
         //remove a random coin and display what was removed
         System.out.println("The coin removed was: " + aBag.remove());
         // calculate the probability of picking a quarter
-        probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / aBag.getCurrentSize();
+        probabilityOfQuarter = (double) aBag.getFrequencyOf(quarter) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a quarter is: " + probabilityOfQuarter);
         // calculate the probability of picking a dime
-        probabilityOfDime = (double) aBag.getFrequencyOf(dime) / aBag.getCurrentSize();
+        probabilityOfDime = (double) aBag.getFrequencyOf(dime) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a dime is: " + probabilityOfDime);
         // calculate the probability of picking a nickel
-        probabilityOfNickel = (double) aBag.getFrequencyOf(nickel) / aBag.getCurrentSize();
+        probabilityOfNickel = (double) aBag.getFrequencyOf(nickel) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a nickel is: " + probabilityOfNickel);
         // calculate the probability of picking a penny
-        probabilityOfPenny = (double) aBag.getFrequencyOf(penny) / aBag.getCurrentSize();
+        probabilityOfPenny = (double) aBag.getFrequencyOf(penny) / (double) aBag.getCurrentSize();
         System.out.println("The probability of picking a penny is: " + probabilityOfPenny);
         //remove a random coin and display what was removed
         System.out.println("The coin removed was: " + aBag.remove());
@@ -169,9 +235,41 @@ public class BagTest {
         System.out.println("The probability of picking a quarter and a dime one after the other is: " + probabilityOfQuarterAndDime);
 
         aBag.clear();
+
+        /*
+         * output:
+         * Running example two
+         * The bag contains 8 coin(s), as follows:
+         * quarter 0.25
+         * quarter 0.25
+         * quarter 0.25
+         * quarter 0.25
+         * dime 0.1
+         * dime 0.1
+         * nickel 0.05
+         * penny 0.01
+         *
+         * The probability of picking a quarter is: 0.5
+         * The probability of picking a dime is: 0.25
+         * The probability of picking a nickel is: 0.125
+         * The probability of picking a penny is: 0.125
+         * The coin removed was: penny 0.01
+         * The probability of picking a quarter is: 0.5714285714285714
+         * The probability of picking a dime is: 0.2857142857142857
+         * The probability of picking a nickel is: 0.14285714285714285
+         * The probability of picking a penny is: 0.0
+         * The coin removed was: nickel 0.05
+         * The probability of picking a quarter and a dime one after the other is: 0.16326530612244897
+         */
     } //end example two
 
     //currently broken
+
+    /**
+     * Example three adds random coins to the bag, then displays the bag
+     * It then removes
+     * @param aBag a bag of coins
+     */
     public static void exampleThree(BagInterface<Coin> aBag) {
         addRandomCoins(aBag);
         displayBag(aBag);
@@ -179,69 +277,125 @@ public class BagTest {
         Coin coin1 = aBag.remove();
         Coin coin2 = aBag.remove();
         Coin coin3 = aBag.remove();
-        double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / aBag.getCurrentSize();
-        double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / aBag.getCurrentSize();
-        double probabilityOfCoin3 = (double) aBag.getFrequencyOf(coin3) / aBag.getCurrentSize();
+        double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / (double) aBag.getCurrentSize();
+        double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / (double) aBag.getCurrentSize();
+        double probabilityOfCoin3 = (double) aBag.getFrequencyOf(coin3) / (double) aBag.getCurrentSize();
         double probabilityOfCoin1Coin2Coin3 = probabilityOfCoin1 * probabilityOfCoin2 * probabilityOfCoin3;
         System.out.println("The probability of picking a " + coin1 + " then a " + coin2 + " then a " + coin3 + " is: " + probabilityOfCoin1Coin2Coin3);
         aBag.clear();
+
+        /*
+        * output:
+        * Running example three
+        *  The bag contains 8 coin(s), as follows:
+        *  quarter 0.25
+        *  nickel 0.05
+        *  penny 0.01
+        *  nickel 0.05
+        *  dime 0.1
+        *  dime 0.1
+        *  penny 0.01
+        *  dime 0.1
+
+         * The probability of picking a dime 0.1 then a penny 0.01 then a dime 0.1 is: 0.008000000000000002
+         */
     }
 
+    /**
+     * This method will add some more coins manually and pick three coins from it
+     * It will then call probability methods to determine the probability of picking random coins from the bag
+     * @param aBag a bag of coins
+     */
     public static void exampleFour(BagInterface<Coin> aBag) {
-        aBag.add(quarter);
-        aBag.add(quarter);
-        aBag.add(quarter);
-        aBag.add(dime);
-        aBag.add(dime);
-        aBag.add(dime);
         aBag.add(nickel);
+        aBag.add(quarter);
+        aBag.add(quarter);
         aBag.add(nickel);
+        aBag.add(dime);
+        aBag.add(quarter);
+        aBag.add(nickel);
+        aBag.add(dime);
         displayBag(aBag);
-        //the next method will remove two coins
-        probabilityOfPickingTwoCoins(aBag);
         //the next method will remove three coins from the bag
         probabilityOfPickingThreeCoins(aBag);
         aBag.clear();
+
+        /*
+        * output:
+        * Running example four
+        * The bag contains 8 coin(s), as follows:
+        * nickel 0.05
+        * quarter 0.25
+        * quarter 0.25
+        * nickel 0.05
+        * dime 0.1
+        * quarter 0.25
+        * nickel 0.05
+        * dime 0.1
+
+        * The probability of picking a dime 0.1 then a nickel 0.05 then a quarter 0.25 is: 0.01904761904761905
+         */
+
     }
 
+    /**
+     * This method will add 8 random coins to the bag and remove three coins from the bag
+     * @param aBag a bag of coins
+     */
+    public static void exampleFive(BagInterface<Coin> aBag) {
+        addRandomCoins(aBag);
+        displayBag(aBag);
+        //the next method will remove three coins from the bag
+        probabilityOfPickingThreeCoins(aBag);
+        aBag.clear();
+        /*
+        * output:
+        * Running example five
+        * The bag contains 8 coin(s), as follows:
+        * nickel 0.05
+        * nickel 0.05
+        * nickel 0.05
+        * dime 0.1
+        * quarter 0.25
+        * nickel 0.05
+        * nickel 0.05
+        * nickel 0.05
+
+        * The probability of picking a nickel 0.05 then a nickel 0.05 then a nickel 0.05 is: 0.2857142857142857
+         */
+    }
+
+    /**
+     * this coin will take a bag of coins and remove two coins from it and return the probability of picking those two coins
+     * @param aBag a bag of coins
+     * @return the probability of picking two coins from the bag
+     */
     public static Double probabilityOfPickingTwoCoins(BagInterface<Coin> aBag) {
         double probabilityOfPickingTwoCoins = 0;
-        for (int i = 0; i < aBag.getCurrentSize(); i++) {
-            Coin coin1 = aBag.remove();
-            System.out.println("Coin removed: " + coin1);
-            for (int j = 0; j < aBag.getCurrentSize(); j++) {
-                Coin coin2 = aBag.remove();
-                System.out.println("Coin removed: " + coin2);
-                double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / aBag.getCurrentSize();
-                double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / aBag.getCurrentSize();
-                double probabilityOfCoin1Coin2 = probabilityOfCoin1 * probabilityOfCoin2;
-                System.out.println("The probability of picking a " + coin1 + " then a " + coin2 + " is: " + probabilityOfCoin1Coin2);
-                probabilityOfPickingTwoCoins += probabilityOfCoin1Coin2;
-            }
-        }
+        Coin coin1 = aBag.remove();
+        double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / (double) aBag.getCurrentSize();
+        Coin coin2 = aBag.remove();
+        double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / (double) aBag.getCurrentSize();
+        probabilityOfPickingTwoCoins = probabilityOfCoin1 * probabilityOfCoin2;
+        System.out.println("The probability of picking a " + coin1 + " then a " + coin2 + " is: " + probabilityOfPickingTwoCoins);
         return probabilityOfPickingTwoCoins;
-    }
 
+    }
+    /**
+     * this coin will take a bag of coins and remove three coins from it and return the probability of picking those three coins
+     * @param aBag a bag of coins
+     * @return the probability of picking three coins from the bag
+     */
     public static Double probabilityOfPickingThreeCoins(BagInterface<Coin> aBag) {
         double probabilityOfPickingThreeCoins = 0;
-        for (int i = 0; i < aBag.getCurrentSize(); i++) {
-            Coin coin1 = aBag.remove();
-            System.out.println("Coin removed: " + coin1);
-            for (int j = 0; j < aBag.getCurrentSize(); j++) {
-                Coin coin2 = aBag.remove();
-                System.out.println("Coin removed: " + coin2);
-                for (int k = 0; k < aBag.getCurrentSize(); k++) {
-                    Coin coin3 = aBag.remove();
-                    System.out.println("Coin removed: " + coin3);
-                    double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / aBag.getCurrentSize();
-                    double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / aBag.getCurrentSize();
-                    double probabilityOfCoin3 = (double) aBag.getFrequencyOf(coin3) / aBag.getCurrentSize();
-                    double probabilityOfCoin1Coin2Coin3 = probabilityOfCoin1 * probabilityOfCoin2 * probabilityOfCoin3;
-                    System.out.println("The probability of picking a " + coin1 + " then a " + coin2 + " then a " + coin3 + " is: " + probabilityOfCoin1Coin2Coin3);
-                    probabilityOfPickingThreeCoins += probabilityOfCoin1Coin2Coin3;
-                }
-            }
-        }
+        Coin coin1 = aBag.remove();
+        double probabilityOfCoin1 = (double) aBag.getFrequencyOf(coin1) / (double) aBag.getCurrentSize();
+        Coin coin2 = aBag.remove();
+        double probabilityOfCoin2 = (double) aBag.getFrequencyOf(coin2) / (double) aBag.getCurrentSize();
+        Coin coin3 = aBag.remove();
+        double probabilityOfCoin3 = (double) aBag.getFrequencyOf(coin3) / (double) aBag.getCurrentSize();
+        probabilityOfPickingThreeCoins = probabilityOfCoin1 * probabilityOfCoin2 * probabilityOfCoin3;
+        System.out.println("The probability of picking a " + coin1 + " then a " + coin2 + " then a " + coin3 + " is: " + probabilityOfPickingThreeCoins);
         return probabilityOfPickingThreeCoins;
     }
 
